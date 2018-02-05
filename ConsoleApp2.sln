@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printful.API.Console", "ConsoleApp2\Printful.API.Console.csproj", "{216C8066-2257-4825-958C-A1BE39171462}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printful.API", "Printful.API\Printful.API.csproj", "{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{216C8066-2257-4825-958C-A1BE39171462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{216C8066-2257-4825-958C-A1BE39171462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{216C8066-2257-4825-958C-A1BE39171462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{216C8066-2257-4825-958C-A1BE39171462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCC7A0BF-2146-46B3-AA2C-9F5D05CB8E7C}
+	EndGlobalSection
+EndGlobal

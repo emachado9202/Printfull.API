@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD7F8520-3D39-44DB-B2DD-298F54CC33BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Printful.API</RootNamespace>
+    <AssemblyName>Printful.API</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\$\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Manager\API.cs" />
+    <Compile Include="Manager\Converter.cs" />
+    <Compile Include="Manager\Proxy.cs" />
+    <Compile Include="Model\Entities\AddressInfo.cs" />
+    <Compile Include="Model\Entities\Address.cs" />
+    <Compile Include="Model\Entities\CardInfo.cs" />
+    <Compile Include="Model\Entities\Costs.cs" />
+    <Compile Include="Model\Entities\Country.cs" />
+    <Compile Include="Model\Entities\CreateGenerationTask.cs" />
+    <Compile Include="Model\Entities\File.cs" />
+    <Compile Include="Model\Entities\FileType.cs" />
+    <Compile Include="Model\Entities\GenerationTask.cs" />
+    <Compile Include="Model\Entities\GenerationTaskExtraMockup.cs" />
+    <Compile Include="Model\Entities\GenerationTaskFile.cs" />
+    <Compile Include="Model\Entities\GenerationTaskMockups.cs" />
+    <Compile Include="Model\Entities\GiftData.cs" />
+    <Compile Include="Model\Entities\Item.cs" />
+    <Compile Include="Model\Entities\ItemInfo.cs" />
+    <Compile Include="Model\Entities\ItemOption.cs" />
+    <Compile Include="Model\Entities\OptionType.cs" />
+    <Compile Include="Model\Entities\Order.cs" />
+    <Compile Include="Model\Entities\PackingSlip.cs" />
+    <Compile Include="Model\Entities\Paging.cs" />
+    <Compile Include="Model\Entities\PrintFile.cs" />
+    <Compile Include="Model\Entities\PrintFileInfo.cs" />
+    <Compile Include="Model\Entities\Product.cs" />
+    <Compile Include="Model\Entities\ProductVariant.cs" />
+    <Compile Include="Model\Entities\ShipmentInfo.cs" />
+    <Compile Include="Model\Entities\Shipment.cs" />
+    <Compile Include="Model\Entities\ShipmentItem.cs" />
+    <Compile Include="Model\Entities\ShippingInfo.cs" />
+    <Compile Include="Model\Entities\ShippingRequest.cs" />
+    <Compile Include="Model\Entities\State.cs" />
+    <Compile Include="Model\Entities\StoreData.cs" />
+    <Compile Include="Model\Entities\SyncProduct.cs" />
+    <Compile Include="Model\Entities\SyncVariantInfo.cs" />
+    <Compile Include="Model\Entities\SyncProductInfo.cs" />
+    <Compile Include="Model\Entities\SyncVariant.cs" />
+    <Compile Include="Model\Entities\TaxAddressInfo.cs" />
+    <Compile Include="Model\Entities\TaxInfo.cs" />
+    <Compile Include="Model\Entities\TaxRequest.cs" />
+    <Compile Include="Model\Entities\Variant.cs" />
+    <Compile Include="Model\Entities\VariantListInfo.cs" />
+    <Compile Include="Model\Entities\VariantInfo.cs" />
+    <Compile Include="Model\Entities\VariantPrintFile.cs" />
+    <Compile Include="Model\Entities\VariantPrintFilePlacement.cs" />
+    <Compile Include="Model\Page\GenerationTaskResult.cs" />
+    <Compile Include="Model\Page\PackingSlipResult.cs" />
+    <Compile Include="Model\Page\PrintFileResult.cs" />
+    <Compile Include="Model\Page\StoreInformationResult.cs" />
+    <Compile Include="Model\Page\CountryStateResult.cs" />
+    <Compile Include="Model\Page\TaxRateResult.cs" />
+    <Compile Include="Model\Page\FileResult.cs" />
+    <Compile Include="Model\Page\SyncVariantResult.cs" />
+    <Compile Include="Model\Page\SyncProductResult.cs" />
+    <Compile Include="Model\Page\SyncProductsResult.cs" />
+    <Compile Include="Model\Page\OrderResult.cs" />
+    <Compile Include="Model\Page\FilesResult.cs" />
+    <Compile Include="Model\Page\OrdersResult.cs" />
+    <Compile Include="Model\Page\RequestCode.cs" />
+    <Compile Include="Model\Page\ProductResult.cs" />
+    <Compile Include="Model\Page\ShippingRatesResult.cs" />
+    <Compile Include="Model\Page\VariantListResult.cs" />
+    <Compile Include="Model\Page\VariantResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryBroker.cs" />
+    <Compile Include="Repository\StoreRepo.cs" />
+    <Compile Include="Repository\MockupRepo.cs" />
+    <Compile Include="Repository\TaxRateRepo.cs" />
+    <Compile Include="Repository\CountryStateRepo.cs" />
+    <Compile Include="Repository\E_commerceRepo.cs" />
+    <Compile Include="Repository\ShippingRateRepo.cs" />
+    <Compile Include="Repository\FileRepo.cs" />
+    <Compile Include="Repository\OrderRepo.cs" />
+    <Compile Include="Repository\ProductRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
