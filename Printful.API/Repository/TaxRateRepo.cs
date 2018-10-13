@@ -60,7 +60,7 @@ namespace Printful.API.Repository
         {
             return await Task.Factory.StartNew(() =>
             {
-                HttpWebRequest webRequest = WebRequest.Create("https://api.printful.com/orders") as HttpWebRequest;
+                HttpWebRequest webRequest = WebRequest.Create("https://api.printful.com/tax/rates") as HttpWebRequest;
 
                 if (proxy != null)
                 {

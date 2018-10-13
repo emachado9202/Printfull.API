@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Printful.API.Manager;
 using Printful.API.Model.Entities;
 using Printful.API.Model.Page;
+using SharpRaven;
+using SharpRaven.Data;
 
 namespace Printful.API.Repository
 {
@@ -14,6 +16,7 @@ namespace Printful.API.Repository
     {
         Task<GenerationTaskResult> CreateTaskAsync(Proxy Proxy, string API, string Id, CreateGenerationTask Request);
         Task<GenerationTaskResult> GetTaskAsync(Proxy Proxy, string API, string Task_Key);
+        GenerationTaskResult GetTask(Proxy Proxy, string API, string Task_Key);
         Task<PrintFileResult> GetPrintFilesAsync(Proxy Proxy, string API, string Id);
     }
 
@@ -34,6 +37,7 @@ namespace Printful.API.Repository
                     webRequest.Proxy = proxy.Get();
                     webRequest.Credentials = proxy.GetCredential();
                 }
+
                 webRequest.Method = "POST";
                 webRequest.ContentType = "application/json; charset=utf-8";
                 webRequest.Headers.Add("Authorization", "Basic " + Manager.API.Encode(api));
@@ -68,6 +72,7 @@ namespace Printful.API.Repository
                         return result;
                     }
                 }
+
                 return null;
             });
         }
@@ -84,6 +89,7 @@ namespace Printful.API.Repository
                     webRequest.Proxy = proxy.Get();
                     webRequest.Credentials = proxy.GetCredential();
                 }
+
                 webRequest.Method = "GET";
                 webRequest.ContentType = "application/json; charset=utf-8";
                 webRequest.Headers.Add("Authorization", "Basic " + Manager.API.Encode(api));
@@ -106,6 +112,7 @@ namespace Printful.API.Repository
                         return result;
                     }
                 }
+
                 return null;
             });
         }
@@ -117,14 +124,13 @@ namespace Printful.API.Repository
                 HttpWebRequest webRequest =
                     WebRequest.Create($"https://api.printful.com/mockup-generator/task?task_key={Task_Key}") as
                         HttpWebRequest;
-
-                logger.Info("Task_Key: " + Task_Key);
-
+                
                 if (proxy != null)
                 {
                     webRequest.Proxy = proxy.Get();
                     webRequest.Credentials = proxy.GetCredential();
                 }
+
                 webRequest.Method = "GET";
                 webRequest.ContentType = "application/json; charset=utf-8";
                 webRequest.Headers.Add("Authorization", "Basic " + Manager.API.Encode(api));
@@ -147,8 +153,52 @@ namespace Printful.API.Repository
                         return result;
                     }
                 }
+
                 return null;
             });
+        }
+
+        public GenerationTaskResult GetTask(Proxy proxy, string api, string Task_Key)
+        {
+            HttpWebRequest webRequest =
+                WebRequest.Create($"https://api.printful.com/mockup-generator/task?task_key={Task_Key}") as
+                    HttpWebRequest;
+
+            logger.Info("Task_Key: " + Task_Key);
+
+            //ravenClient.Capture(new SentryEvent($"Task_Key: {Task_Key}"));
+
+            if (proxy != null)
+            {
+                webRequest.Proxy = proxy.Get();
+                webRequest.Credentials = proxy.GetCredential();
+            }
+
+            webRequest.Method = "GET";
+            webRequest.ContentType = "application/json; charset=utf-8";
+            webRequest.Headers.Add("Authorization", "Basic " + Manager.API.Encode(api));
+
+            WebResponse response = webRequest.GetResponse();
+
+            if (((HttpWebResponse) response).StatusCode == HttpStatusCode.OK)
+            {
+                // Get the stream containing content returned by the server.
+                Stream dataStream = response.GetResponseStream();
+                if (dataStream != null)
+                {
+                    // Open the stream using a StreamReader for easy access.
+                    StreamReader reader = new StreamReader(dataStream);
+                    // Read the content.
+                    string responseFromServer = reader.ReadToEnd();
+                    // Display the content.
+                    GenerationTaskResult result =
+                        JsonConvert.DeserializeObject<GenerationTaskResult>(responseFromServer, Converter.Settings);
+
+                    return result;
+                }
+            }
+
+            return null;
         }
     }
 }

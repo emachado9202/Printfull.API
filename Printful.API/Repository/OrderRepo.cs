@@ -15,7 +15,7 @@ namespace Printful.API.Repository
         Task<OrderResult> NewOrderAsync(Proxy Proxy, string API, Order order, bool Confirm, bool Update_Existing);
         Task<OrderResult> GetAsync(Proxy Proxy, string API, string Id);
         Task<OrderResult> DeleteAsync(Proxy Proxy, string API, string Id);
-        Task<OrderResult> UpdateAsync(Proxy Proxy, string API, string Id, bool Confirm, Order order);
+        Task<OrderResult> UpdateAsync(Proxy Proxy, string API, int Id, bool Confirm, Order order);
         Task<OrderResult> DraftAsync(Proxy Proxy, string API, string Id);
     }
 
@@ -191,7 +191,7 @@ namespace Printful.API.Repository
             });
         }
 
-        public async Task<OrderResult> UpdateAsync(Proxy proxy, string api, string id, bool confirm, Order order)
+        public async Task<OrderResult> UpdateAsync(Proxy proxy, string api, int id, bool confirm, Order order)
         {
             return await Task.Factory.StartNew(() =>
             {
